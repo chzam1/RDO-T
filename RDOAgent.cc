@@ -136,7 +136,7 @@ double RDOAgent::updateStateWithProjection(const std::map<int, double>& neighbor
     double xk = state;
     double gradientTerm = -stepSize * gradient;
 
-    // IMPORTANT FIX: Calculate consensus term separately
+    
     // This ensures consensus has influence even in projection-based updates
     double consensusValue = calculateConsensusValue(neighborStates);
     double consensusTerm = (!neighborStates.empty()) ?
@@ -153,7 +153,7 @@ double RDOAgent::updateStateWithProjection(const std::map<int, double>& neighbor
     // Project result to [rMin, rMax]
     double projectedState = std::min(std::max(xk_next, rMin), rMax);
 
-    // IMPORTANT FIX: Ensure state change happens
+    // Ensure state change happens
     if (std::abs(projectedState - state) < 0.001) {
         // Force movement toward target if no change
         double targetDir = (costFunctionTarget > state) ? 1.0 : -1.0;
@@ -185,7 +185,7 @@ double RDOAgent::updateStateWithProjection(const std::map<int, double>& neighbor
     return projectedState;
 }
 
-// Consensus-based update (from expanded implementation)
+// Consensus-based update
 double RDOAgent::updateState(const std::map<int, double>& neighborStates, double stepSize) {
     // Debug output
     std::cout << "Node " << nodeId << " updating (consensus method) at time " << simTime().dbl()
@@ -205,7 +205,7 @@ double RDOAgent::updateState(const std::map<int, double>& neighborStates, double
     // Calculate update terms
     double gradientTerm = -stepSize * gradient;
 
-    // IMPORTANT FIX: Use stronger consensus weight to ensure influence
+    //  Use stronger consensus weight to ensure influence
     double consensusTerm = (!filteredStates.empty()) ?
                            consensusWeight * stepSize * (consensusValue - state) : 0.0;
 
