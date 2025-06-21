@@ -81,7 +81,7 @@ void RDOAgent::setConsensusWeight(double weight) {
     consensusWeight = weight;
 }
 
-// Projection-based update (from original implementation)
+// Projection-based update
 double RDOAgent::updateStateWithProjection(const std::map<int, double>& neighborStates, double stepSize) {
     // Debug output
     std::cout << "Node " << nodeId << " updating at time " << simTime().dbl()
