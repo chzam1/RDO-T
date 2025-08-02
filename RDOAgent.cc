@@ -835,12 +835,12 @@ void logConvergence(double time, int nodeId, double oldState, double newState, d
 //void RDOAgent::setGradient(double newGradient) {
 //    gradient = newGradient;
 //}
-//
+
 //// Configuration methods
 //void RDOAgent::setFilterType(int type) {
 //    filterType = type;
 //}
-//
+
 //void RDOAgent::setConsensusAlgorithm(int algo) {
 //    consensusAlgorithm = algo;
 //}
